@@ -1,0 +1,111 @@
+service: aws-serverless-exercise
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+  stage: dev
+  httpApi:
+    cors: true
+  
+plugins:
+  - serverless-offline
+
+functions:
+  getAllCompanies:
+    handler: index.getAllCompanies
+    events:
+      - httpApi:
+          path: /companies
+          method: get
+  getCompanyById:
+    handler: index.getCompanyById
+    events:
+      - httpApi:
+          path: /companies/{company_id}
+          method: get
+  insertCompany:
+    handler: index.insertCompany
+    events:
+      - httpApi:
+          path: /companies
+          method: post
+  updateCompanyById:
+    handler: index.updateCompanyById
+    events:
+      - httpApi:
+          path: /companies/{company_id}
+          method: put
+  archiveCompanyById:
+    handler: index.archiveCompanyById
+    events:
+      - httpApi:
+          path: /companies/archive/{company_id}
+          method: delete
+  getTeamsByCompanyId:
+    handler: index.getTeamsByCompanyId
+    events:
+      - httpApi:
+          path: /team/company/{company_id}
+          method: get
+  getTeamById:
+    handler: index.getTeamById
+    events:
+      - httpApi:
+          path: /team/{team_id}
+          method: get
+  insertTeam:
+    handler: index.insertTeam
+    events:
+      - httpApi:
+          path: /team
+          method: post
+  editTeamById:
+    handler: index.editTeamById
+    events:
+      - httpApi:
+          path: /team/{team_id}
+          method: put
+  archiveTeam:
+    handler: index.archiveTeam
+    events:
+      - httpApi:
+          path: /team/archive/{team_id}
+          method: delete
+  getEmployeesByCompanyId:
+    handler: index.getEmployeesByCompanyId
+    events:
+      - httpApi:
+          path: /employees/company/{company_id}
+          method: get
+  getEmployeesByTeamId:
+    handler: index.getEmployeesByTeamId
+    events:
+      - httpApi:
+          path: /employees/team/{team_id}
+          method: get
+  getEmployeeById:
+    handler: index.getEmployeeById
+    events:
+      - httpApi:
+          path: /employees/{employee_id}
+          method: get
+  insertEmployee:
+    handler: index.insertEmployee
+    events:
+      - httpApi:
+          path: /employees
+          method: post
+  editEmployeeById:
+    handler: index.editEmployeeById
+    events:
+      - httpApi:
+          path: /employees/{employee_id}
+          method: put
+  archiveEmployee:
+    handler: index.archiveEmployee
+    events:
+      - httpApi:
+          path: /employees/archive/{employee_id}
+          method: delete
