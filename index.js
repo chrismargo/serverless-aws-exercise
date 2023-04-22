@@ -2,10 +2,10 @@ const ServerlessClient = require('serverless-postgres')
 
 const client = new ServerlessClient({
   user : 'postgres',
-  host : 'localhost',
-  database: 'postgres',
-  password: 'password123',
-  port: 5432,
+  host : 'containers-us-west-205.railway.app',
+  database: 'railway',
+  password: '3jZPzHo1OD8wKO1VP5YG',
+  port: 5870,
   debug : true,
   delayMs : 3000
 })
