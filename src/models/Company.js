@@ -1,5 +1,5 @@
 class Company {
-    constructor(id, company_name, company_address, year_founded, modified_at, created_at, archived){
+    constructor(id = 0, company_name = null, company_address = null, year_founded = null, modified_at = null, created_at = null, archived = null){
         this.id = id
         this.company_name = company_name
         this.company_address = company_address

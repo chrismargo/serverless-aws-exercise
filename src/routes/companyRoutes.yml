@@ -11,12 +11,12 @@ functions:
       - httpApi:
           path: /companies/{company_id}
           method: get
-    # insertCompany:
-    #   handler: index.insertCompany
-    #   events:
-    #     - httpApi:
-    #         path: /companies
-    #         method: post
+  insertCompany:
+    handler: src/handlers/insertCompanyHandler.insertCompany
+    events:
+      - httpApi:
+          path: /companies
+          method: post
     # updateCompanyById:
     #   handler: index.updateCompanyById
     #   events:

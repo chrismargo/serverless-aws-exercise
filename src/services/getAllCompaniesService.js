@@ -6,7 +6,7 @@ module.exports.getAllCompaniesService = async () => {
     try{
         const response = await databaseQuery('SELECT * FROM companies')
         const companies = response.rows.map(item => {
-            const company = new Company(item.id, item.company_name, item.company_address, item.created_at, item.updated_at, item.archived)
+            const company = new Company(item.company_id, item.company_name, item.company_address, item.created_at, item.updated_at, item.archived)
 
             return company
         })
