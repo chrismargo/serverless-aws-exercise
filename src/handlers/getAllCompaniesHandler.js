@@ -4,7 +4,7 @@ module.exports.getAllCompanies = async (event, context) => {
     const { result, statusCode } = await getAllCompaniesService()
 
     return { 
-        result : result,
+        body : result,
         statusCode : statusCode
     }
 }

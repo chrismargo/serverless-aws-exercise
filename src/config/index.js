@@ -8,4 +8,4 @@ const config = {
     PG_DATABASE_PORT: process.env.PG_DATABASE_PORT,
 }
 
-module.exports = config
+module.exports = { config }
