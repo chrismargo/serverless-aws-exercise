@@ -47,8 +47,8 @@ functions:
       - httpApi:
           path: /team
           method: post
-  editTeamById:
-    handler: src/handlers/editTeamByIdHandler.editTeamById
+  updateTeamById:
+    handler: src/handlers/updateTeamByIdHandler.updateTeamById
     events:
       - httpApi:
           path: /team/{team_id}
