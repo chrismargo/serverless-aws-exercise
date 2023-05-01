@@ -1,6 +1,6 @@
-const { databaseQuery } = require('../middlewares/databaseQuery')
+const { databaseQuery } = require('../../middlewares/databaseQuery')
 
-const Company = require('../models/Company')
+const Company = require('../../models/Company')
 
 
 module.exports.updateCompanyByIdService = async (company_id, company_name, company_address, year_founded) => {

@@ -1,4 +1,4 @@
-const { updateCompanyByIdService } = require('../services/updateCompanyByIdService')
+const { updateCompanyByIdService } = require('../services/companies/updateCompanyByIdService')
 
 module.exports.updateCompanyById = async (event, context) => {
     const { company_id } = event.pathParameters

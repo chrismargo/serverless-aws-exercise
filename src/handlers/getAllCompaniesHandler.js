@@ -1,4 +1,4 @@
-const { getAllCompaniesService } = require('../services/getAllCompaniesService')
+const { getAllCompaniesService } = require('../services/companies/getAllCompaniesService')
 
 module.exports.getAllCompanies = async (event, context) => {
     const { result, statusCode } = await getAllCompaniesService()

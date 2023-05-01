@@ -1,6 +1,6 @@
 class Employee{
-    constructor(id, employee_name, company_title, year_hired, birthdate, salary, image, team, created_at, modified_at, archived){
-        this.id = id
+    constructor(employee_id, employee_name, company_title, year_hired, birthdate, salary, image, team, created_at, modified_at, archived){
+        this.employee_id = employee_id
         this.employee_name = employee_name
         this.company_title = company_title
         this.year_hired = year_hired
@@ -14,7 +14,7 @@ class Employee{
     }
 
     get getEmployeeId(){
-        return this.id
+        return this.employee_id
     }
 
     get getEmployeeName(){

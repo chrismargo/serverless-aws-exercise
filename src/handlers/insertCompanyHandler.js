@@ -1,4 +1,4 @@
-const { insertCompanyService } = require('../services/insertCompanyService')
+const { insertCompanyService } = require('../services/companies/insertCompanyService')
 
 module.exports.insertCompany = async (event, context) => { 
     const { company_name, company_address, year_founded} = JSON.parse(event.body)

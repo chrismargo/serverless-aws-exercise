@@ -1,5 +1,5 @@
 class Team{
-    constructor(id, team_name, team_leader, company, created_at, modified_at, archived){
+    constructor(team_id, team_name, team_leader, company, created_at, modified_at, archived){
         this.id = id
         this.team_name = team_name
         this.team_leader = team_leader
@@ -10,7 +10,7 @@ class Team{
     }
 
     get getTeamId(){
-        return this.id
+        return this.team_id
     }
 
     get getTeamName(){

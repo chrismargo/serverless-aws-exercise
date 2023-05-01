@@ -1,6 +1,6 @@
-const { databaseQuery }  = require("../middlewares/databaseQuery")
+const { databaseQuery }  = require("../../middlewares/databaseQuery")
 
-const Company  = require("../models/Company")
+const Company  = require("../../models/Company")
 
 module.exports.getAllCompaniesService = async () => {
     try{
