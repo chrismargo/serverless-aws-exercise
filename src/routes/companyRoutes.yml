@@ -29,12 +29,12 @@ functions:
       - httpApi:
           path: /companies/{company_id}/archive
           method: delete
-    # getTeamsByCompanyId:
-    #   handler: index.getTeamsByCompanyId
-    #   events:
-    #     - httpApi:
-    #         path: /team/company/{company_id}
-    #         method: get
+  getTeamsByCompanyId:
+    handler: src/handlers/getTeamsByCompanyIdHandler.getTeamsByCompanyId
+    events:
+      - httpApi:
+          path: /team/company/{company_id}
+          method: get
     # getTeamById:
     #   handler: index.getTeamById
     #   events:
