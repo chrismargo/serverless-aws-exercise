@@ -4,9 +4,10 @@ const Team = require('../../models/Team')
 
 module.exports.archiveTeamService = async(team_id) => {
     try{
-        
+
         await databaseQuery(`UPDATE team SET archived = true, modified_at = CURRENT_TIMESTAMP WHERE team_id = ${team_id}`)
-        
+        await databaseQuery(`UPDATE employees SET archived = true, modified_at = CURRENT_TIMESTAMP WHERE team = ${team_id};`)
+
         return {
             result : JSON.stringify({
                 message : 'Successfully archived team record'

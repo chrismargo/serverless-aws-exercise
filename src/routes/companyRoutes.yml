@@ -53,12 +53,12 @@ functions:
       - httpApi:
           path: /team/{team_id}
           method: put
-    # archiveTeam:
-    #   handler: index.archiveTeam
-    #   events:
-    #     - httpApi:
-    #         path: /team/archive/{team_id}
-    #         method: delete
+  archiveTeam:
+    handler: src/handlers/archiveTeamHandler.archiveTeam
+    events:
+      - httpApi:
+          path: /team/{team_id}/archive
+          method: delete
     # getEmployeesByCompanyId:
     #   handler: index.getEmployeesByCompanyId
     #   events:
