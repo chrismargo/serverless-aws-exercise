@@ -113,7 +113,7 @@ module.exports.getTeamsByCompanyId = async (event, context, callback) => {
 
   await client.connect()
 
-  const response = await client.query(`SELECT * FROM team WHERE company = ${company_id}`)
+  const response = await client.query(`SELECT * FROM team WHERE companies = ${company_id}`)
 
   await client.clean()
 
