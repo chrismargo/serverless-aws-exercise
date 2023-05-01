@@ -71,12 +71,12 @@ functions:
       - httpApi:
           path: /employees/team/{team_id}
           method: get
-    # getEmployeeById:
-    #   handler: index.getEmployeeById
-    #   events:
-    #     - httpApi:
-    #         path: /employees/{employee_id}
-    #         method: get
+  getEmployeeById:
+    handler: src/handlers/getEmployeeByIdHandler.getEmployeeById
+    events:
+      - httpApi:
+          path: /employees/{employee_id}
+          method: get
     # insertEmployee:
     #   handler: index.insertEmployee
     #   events:
