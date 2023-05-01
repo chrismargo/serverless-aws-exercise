@@ -83,12 +83,12 @@ functions:
       - httpApi:
           path: /employees
           method: post
-    # editEmployeeById:
-    #   handler: index.editEmployeeById
-    #   events:
-    #     - httpApi:
-    #         path: /employees/{employee_id}
-    #         method: put
+  updateEmployeeById:
+    handler: src/handlers/updateEmployeeByIdHandler.updateEmployeeById
+    events:
+      - httpApi:
+          path: /employees/{employee_id}
+          method: put
     # archiveEmployee:
     #   handler: index.archiveEmployee
     #   events:

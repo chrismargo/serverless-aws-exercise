@@ -14,7 +14,7 @@ module.exports.insertEmployeeService = async (employee_name, company_title, year
             result : JSON.stringify({
                 message : 'Successfully created employee record'
             }),
-            statusCode : 200
+            statusCode : 201
         }
     }catch(error){
         console.error('An error has occurred:', error)
