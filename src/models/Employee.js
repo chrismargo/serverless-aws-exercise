@@ -6,7 +6,7 @@ class Employee{
         this.year_hired = year_hired
         this.birthdate = birthdate
         this.salary = salary
-        this.image = image,
+        this.image = image
         this.team = team
         this.created_at = created_at
         this.modified_at = modified_at
