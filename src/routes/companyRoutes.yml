@@ -41,12 +41,12 @@ functions:
       - httpApi:
           path: /team/{team_id}
           method: get
-    # insertTeam:
-    #   handler: index.insertTeam
-    #   events:
-    #     - httpApi:
-    #         path: /team
-    #         method: post
+  insertTeam:
+    handler: src/handlers/insertTeamHandler.insertTeam
+    events:
+      - httpApi:
+          path: /team
+          method: post
     # editTeamById:
     #   handler: index.editTeamById
     #   events:
