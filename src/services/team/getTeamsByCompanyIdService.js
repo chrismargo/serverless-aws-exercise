@@ -1,16 +1,20 @@
 const { databaseQuery } = require('../../middlewares/databaseQuery')
 
-const Company =  require('../../models/Company')
+const Team =  require('../../models/Team')
 
 module.exports.getTeamsByCompanyIdService = async (company_id) => {
     try{
-        const company = new Company(company_id, null, null, null, null, null, false)
 
-        const response = await databaseQuery(`SELECT * FROM team WHERE company = ${company.company_id}`)
-        
+        const response = await databaseQuery(`SELECT * FROM team WHERE company = ${company_id}`)
+        const teams = response.rows.map((item) => {
+            const team = new Team(item.team_id, item.team_name, item.team_leader, item.company, item.created_at, item.modified_at, item.archived)
+
+            return team
+        }) 
+
         return {
             result : JSON.stringify({
-                result : response.rows
+                result : teams
             }),
             statusCode: 200
         }
