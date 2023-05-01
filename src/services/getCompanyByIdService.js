@@ -15,6 +15,7 @@ module.exports.getCompanyByIdService = async (company_id) => {
             statusCode : 200
         }
     }catch(error){
+        console.error('Error has occurred:', error)
         return {
             result : JSON.stringify({
                 message : error

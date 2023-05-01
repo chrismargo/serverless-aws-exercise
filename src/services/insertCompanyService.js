@@ -14,8 +14,9 @@ module.exports.insertCompanyService = async (company_name, company_address, year
             statusCode : 201
         }
     } catch(error){
+        console.error('Error has occured:', error)
         return { 
-            result : JSON.stringify({
+            body : JSON.stringify({
                 message : error
             }),
             statusCode : 400

@@ -18,7 +18,7 @@ module.exports.updateCompanyByIdService = async (company_id, company_name, compa
     } catch(error){
         console.error('Error updating company:', error)
         return {
-            result : JSON.stringify({
+            body : JSON.stringify({
                 message : error
             }),
             statusCode : 400

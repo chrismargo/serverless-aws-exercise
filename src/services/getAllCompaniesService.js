@@ -18,7 +18,7 @@ module.exports.getAllCompaniesService = async () => {
             statusCode : 200
         }
     } catch (error){
-        console.log(`${error}`)
+        console.error(`Error has occurred:`, error)
         return {
             body : JSON.stringify({
                 message : error
