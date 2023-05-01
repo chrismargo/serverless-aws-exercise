@@ -59,12 +59,12 @@ functions:
       - httpApi:
           path: /team/{team_id}/archive
           method: delete
-    # getEmployeesByCompanyId:
-    #   handler: index.getEmployeesByCompanyId
-    #   events:
-    #     - httpApi:
-    #         path: /employees/company/{company_id}
-    #         method: get
+  getEmployeesByCompanyId:
+    handler: src/handlers/getEmployeesByCompanyIdHandler.getEmployeesByCompanyId
+    events:
+      - httpApi:
+          path: /employees/company/{company_id}
+          method: get
     # getEmployeesByTeamId:
     #   handler: index.getEmployeesByTeamId
     #   events:

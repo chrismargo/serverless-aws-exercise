@@ -93,3 +93,5 @@ class Employee{
         this.archived = state
     }
 }
+
+module.exports = Employee
