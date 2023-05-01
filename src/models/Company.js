@@ -1,6 +1,6 @@
 class Company {
-    constructor(id = 0, company_name = null, company_address = null, year_founded = null, modified_at = null, created_at = null, archived = null){
-        this.id = id
+    constructor(company_id, company_name, company_address, year_founded, modified_at, created_at, archived){
+        this.company_id = company_id
         this.company_name = company_name
         this.company_address = company_address
         this.year_founded = year_founded
@@ -10,7 +10,7 @@ class Company {
     }
 
     get getCompanyId(){
-        return this.id
+        return this.company_id
     }
 
     get getCompanyName(){ 

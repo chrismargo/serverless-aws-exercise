@@ -3,13 +3,9 @@ const { databaseQuery } = require('../middlewares/databaseQuery')
 const Company = require('../models/Company')
 
 module.exports.insertCompanyService = async (company_name, company_address, year_founded) => {
-    const company = new Company(
-            company_name = company_name,
-            company_address = company_address,
-            year_founded = year_founded
-        )
+    const company = new Company(null, company_name, company_address, year_founded, null, null)
     try{
-        await databaseQuery(`INSERT INTO companies(company_name, company_address, year_founded) VALUES ('${company.company_name}', '${company.company_address}', ${company.year_founded})`)
+        await databaseQuery(`INSERT INTO companies(company_name, company_address, year_founded, archived) VALUES ('${company.company_name}', '${company.company_address}', ${company.year_founded}, false)`)
 
         return { 
             result : JSON.stringify({

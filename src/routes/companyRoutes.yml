@@ -17,12 +17,12 @@ functions:
       - httpApi:
           path: /companies
           method: post
-    # updateCompanyById:
-    #   handler: index.updateCompanyById
-    #   events:
-    #     - httpApi:
-    #         path: /companies/{company_id}
-    #         method: put
+  updateCompanyById:
+    handler: src/handlers/updateCompanyByIdHandler.updateCompanyById
+    events:
+      - httpApi:
+          path: /companies/{company_id}
+          method: put
     # archiveCompanyById:
     #   handler: index.archiveCompanyById
     #   events:
