@@ -35,12 +35,12 @@ functions:
       - httpApi:
           path: /team/company/{company_id}
           method: get
-    # getTeamById:
-    #   handler: index.getTeamById
-    #   events:
-    #     - httpApi:
-    #         path: /team/{team_id}
-    #         method: get
+  getTeamById:
+    handler: src/handlers/getTeamByIdHandler.getTeamById
+    events:
+      - httpApi:
+          path: /team/{team_id}
+          method: get
     # insertTeam:
     #   handler: index.insertTeam
     #   events:

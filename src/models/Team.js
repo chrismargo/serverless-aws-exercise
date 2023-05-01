@@ -1,6 +1,6 @@
 class Team{
     constructor(team_id, team_name, team_leader, company, created_at, modified_at, archived){
-        this.id = id
+        this.team_id = team_id
         this.team_name = team_name
         this.team_leader = team_leader
         this.company = company
@@ -34,7 +34,7 @@ class Team{
     }
 
     set setCompany(company){
-        
+        this.company = company
     }
 
     get getCreatedAt(){
@@ -49,3 +49,5 @@ class Team{
         return this.archived
     }
 }
+
+module.exports = Team
