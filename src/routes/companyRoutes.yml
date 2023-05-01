@@ -89,9 +89,9 @@ functions:
       - httpApi:
           path: /employees/{employee_id}
           method: put
-    # archiveEmployee:
-    #   handler: index.archiveEmployee
-    #   events:
-    #     - httpApi:
-    #         path: /employees/archive/{employee_id}
-    #         method: delete
+  archiveEmployee:
+    handler: src/handlers/archiveEmployeeHandler.archiveEmployee
+    events:
+      - httpApi:
+          path: /employees/{employee_id}/archive
+          method: delete
