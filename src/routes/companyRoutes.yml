@@ -47,12 +47,12 @@ functions:
       - httpApi:
           path: /team
           method: post
-    # editTeamById:
-    #   handler: index.editTeamById
-    #   events:
-    #     - httpApi:
-    #         path: /team/{team_id}
-    #         method: put
+  editTeamById:
+    handler: src/handlers/editTeamByIdHandler.editTeamById
+    events:
+      - httpApi:
+          path: /team/{team_id}
+          method: put
     # archiveTeam:
     #   handler: index.archiveTeam
     #   events:
