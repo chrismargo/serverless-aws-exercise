@@ -1,41 +1,43 @@
 CREATE TABLE companies(
 	company_id SERIAL,
-	company_name varchar(500),
-	company_address varchar(500),
-	year_founded int,
-	created_at timestamp,
-	modified_at timestamp,
-	archived bool,
+	company_name VARCHAR(500),
+	company_address VARCHAR(500),
+	year_founded INT,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	archived BOOL NULL,
 	PRIMARY KEY (company_id)
 );
 
 CREATE TABLE team(
 	team_id SERIAL, 
-	team_name varchar(500),
-	team_leader varchar(500),
-	company int,
-	created_at timestamp,
-	modified_at timestamp,
-	archived bool,
+	team_name VARCHAR(500),
+	team_leader INT NULL,
+	company INT,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	archived BOOL,
 	PRIMARY KEY (team_id),
-	FOREIGN KEY (company) REFERENCES companies(company_id) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (company) REFERENCES companies(company_id) ON DELETE SET NULL
 );
 
 CREATE TABLE employees(
 	employee_id SERIAL,
-	employee_name varchar(500),
-	company_title varchar(500),
-	year_hired int,
-	birthdate date,
-	salary int,
-	image varchar(500),
-	team int,
-	created_at timestamp,
-	modified_at timestamp,
+	employee_name VARCHAR(500),
+	company_title VARCHAR(500),
+	year_hired INT,
+	birthdate DATE,
+	salary INT,
+	image VARCHAR(500),
+	team INT,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	archived bool,
 	PRIMARY KEY (employee_id),
-	FOREIGN KEY (team) REFERENCES team(team_id) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (team) REFERENCES team(team_id) ON DELETE SET NULL
 );
+
+ALTER TABLE team ADD CONSTRAINT team_leader_fk FOREIGN KEY (team_leader) REFERENCES employees (employee_id) ON DELETE SET NULL;
 
 -- Insert 2 companies
 INSERT INTO companies (company_name, company_address, year_founded, created_at, modified_at, archived)
@@ -44,16 +46,16 @@ VALUES ('Acme Corporation', '123 Main St, Anytown, USA', 1995, CURRENT_TIMESTAMP
 
 -- Insert 5 teams for each company
 INSERT INTO team (team_name, team_leader, company, created_at, modified_at, archived)
-VALUES ('Development1', 'John Doe', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Sales1', 'Jane Smith', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Marketing1', 'Alice Brown', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Support1', 'Bob Johnson', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('HR1', 'Charlie Williams', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Development2', 'David Davis', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Sales2', 'Eve Martinez', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Marketing2', 'Frank Miller', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('Support2', 'Grace Taylor', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
-       ('HR2', 'Henry Anderson', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false);
+VALUES ('Development1', NULL, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Sales1', NULL, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Marketing1', NULL, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Support1', NULL, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('HR1', NULL, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Development2', NULL, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Sales2', NULL, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Marketing2', NULL, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('Support2', NULL, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
+       ('HR2', NULL, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false);
 
 -- Insert 20 employees, 2 for each team
 INSERT INTO employees (employee_name, company_title, year_hired, birthdate, salary, image, team, created_at, modified_at, archived)
@@ -78,7 +80,26 @@ VALUES ('John Doe', 'Software Engineer', 2010, '1985-04-12', 80000, 'john_doe.jp
        ('Peter Adams', 'Customer Support Representative', 2018, '1992-09-15', 55000, 'peter_adams.jpg', 9, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false),
        ('Quincy Baker', 'HR Specialist', 2021, '1993-10-17', 58000, 'quincy_baker.jpg', 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false);
 
+UPDATE team SET team_leader = 1 WHERE team_id = 1;
+UPDATE team SET team_leader = 3 WHERE team_id = 2;
+UPDATE team SET team_leader = 5 WHERE team_id = 3;
+UPDATE team SET team_leader = 7 WHERE team_id = 4;
+UPDATE team SET team_leader = 11 WHERE team_id = 5;
+UPDATE team SET team_leader = 13 WHERE team_id = 6;
 
 DROP TABLE companies;
 DROP TABLE employees;
 DROP TABLE team;
+
+SELECT employees.employee_id, employees.team
+FROM employees
+JOIN team ON employees.team = team.team_id;
+
+SELECT team.team_id, team.team_leader, employees.employee_name
+FROM team
+JOIN employees ON team.team_leader = employees.employee_id;
+
+UPDATE team SET team_leader = 15 WHERE team_id = 7;
+UPDATE team SET team_leader = 16 WHERE team_id = 8;
+UPDATE team SET team_leader = 18 WHERE team_id = 9;
+UPDATE team SET team_leader = 20 WHERE team_id = 10;
